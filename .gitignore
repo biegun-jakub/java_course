@@ -21,3 +21,7 @@ sandbox/build/scripts/sandbox
 sandbox/build/scripts/sandbox.bat
 sandbox/build/tmp/compileJava/previous-compilation-data.bin
 sandbox/build/tmp/jar/MANIFEST.MF
+sandbox/build/classes/java/main/ru/stqa/pft/sandbox/MyFirstProgram.class
+sandbox/build/classes/java/main/ru/stqa/pft/sandbox/Point.class
+sandbox/build/classes/java/main/ru/stqa/pft/sandbox/Rectangle.class
+sandbox/build/classes/java/main/ru/stqa/pft/sandbox/Square.class
