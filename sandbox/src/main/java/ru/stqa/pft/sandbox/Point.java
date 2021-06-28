@@ -5,26 +5,22 @@ import static java.lang.Math.sqrt;
 
 public class Point {
 
-    public double x1;
-    public double y1;
-    public double x2;
-    public double y2;
+    public double x;
+    public double y;
 
-    public Point(double x1, double y1, double x2, double y2) {
-        this.x1 = x1;
-        this.y1 = y1;
-        this.x2 = x2;
-        this.y2 = y2;
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public double distance() {
+    public double distance(Point p2) {
         double d;
-        double p1;
-        double p2;
+        double res1;
+        double res2;
 
-        p1 = pow((this.x2 - this.x1), 2.0);
-        p2 = pow((this.y2 - this.y1), 2.0);
-        d = sqrt(p1 + p2);
+        res1 = pow((p2.x - this.x), 2.0);
+        res2 = pow((p2.y - this.y), 2.0);
+        d = sqrt(res1 + res2);
         return d;
     }
 

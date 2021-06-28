@@ -16,23 +16,24 @@ public class MyFirstProgram {
 		Rectangle r = new Rectangle(4, 6);
 		System.out.println("Powierzchnia prostokąta o bokach " + r.a + " i " + r.b + " = " + r.area());
 
-		Point p = new Point(5, 3, 7, 2);
-		System.out.println("Odległość między punktami wynosi: " + distance(p.x1, p.y1, p.x2, p.y2));
-		System.out.println("Odległość między punktami wynosi: " + p.distance());
+		Point p1 = new Point(5, 3);
+		Point p2 = new Point(4, 6);
+		System.out.println("Odległość między punktami wynosi: " + distance(p1, p2));
+		System.out.println("Odległość między punktami wynosi: " + p1.distance(p2));
 	}
 
 	public static void hello(String somebody) {
 		System.out.println("Hello, " + somebody + "!");
 	}
 
-	public static double distance(double x1, double y1, double x2, double y2) {
+	public static double distance(Point p1, Point p2) {
 		double d;
-		double p1;
-		double p2;
+		double res1;
+		double res2;
 
-		p1 = pow((x2 - x1), 2.0);
-		p2 = pow((y2 - y1), 2.0);
-		d = sqrt(p1 + p2);
+		res1 = pow((p2.x - p1.x), 2.0);
+		res2 = pow((p2.y - p1.y), 2.0);
+		d = sqrt(res1 + res2);
 		return d;
 	}
 }
