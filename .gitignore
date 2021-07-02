@@ -1,5 +1,5 @@
 .gradle
-/build/
+sandbox/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -25,3 +25,16 @@ sandbox/build/classes/java/main/ru/stqa/pft/sandbox/MyFirstProgram.class
 sandbox/build/classes/java/main/ru/stqa/pft/sandbox/Point.class
 sandbox/build/classes/java/main/ru/stqa/pft/sandbox/Rectangle.class
 sandbox/build/classes/java/main/ru/stqa/pft/sandbox/Square.class
+sandbox/build/classes/java/test/ru/stqa/pft/sandbox/PointTests.class
+sandbox/build/classes/java/test/ru/stqa/pft/sandbox/SquareTests.class
+sandbox/build/reports/tests/test/classes/ru.stqa.pft.sandbox.PointTests.html
+sandbox/build/reports/tests/test/css/base-style.css
+sandbox/build/reports/tests/test/css/style.css
+sandbox/build/reports/tests/test/index.html
+sandbox/build/reports/tests/test/js/report.js
+sandbox/build/reports/tests/test/packages/ru.stqa.pft.sandbox.html
+sandbox/build/test-results/test/binary/output.bin
+sandbox/build/test-results/test/binary/output.bin.idx
+sandbox/build/test-results/test/binary/results.bin
+sandbox/build/test-results/test/TEST-ru.stqa.pft.sandbox.PointTests.xml
+sandbox/build/tmp/compileTestJava/previous-compilation-data.bin
