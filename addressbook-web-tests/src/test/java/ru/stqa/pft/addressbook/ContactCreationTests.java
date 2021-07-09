@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class ContactCreationTests {
   private WebDriver driver;
 
-  @BeforeClass(alwaysRun = true)
+  @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -16,7 +16,7 @@ public class ContactCreationTests {
   }
 
   @Test
-  public void testContactCreationTests() throws Exception {
+  public void testContactCreation() {
     login();
     initNewContactCreation();
     fillNewContactForm(new ContactData("Test", "Test Street", "test@test.test", "Tester", "111222333"));
@@ -58,7 +58,7 @@ public class ContactCreationTests {
     driver.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
-  @AfterClass(alwaysRun = true)
+  @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
     driver.quit();
   }
