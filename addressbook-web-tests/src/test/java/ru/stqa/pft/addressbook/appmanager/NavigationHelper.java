@@ -12,4 +12,5 @@ public class NavigationHelper extends HelperBase {
     public void goToGroupPage() {
       driver.findElement(By.linkText("groups")).click();
     }
+
 }
