@@ -13,7 +13,7 @@ public class ContactHelper extends HelperBase {
         driver.findElement(By.linkText("home page")).click();
     }
 
-    public void fillNewContactForm(ContactData contactData) {
+    public void fillContactForm(ContactData contactData) {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("address"), contactData.getAddress());
@@ -39,5 +39,13 @@ public class ContactHelper extends HelperBase {
 
     public void confirmDeleteContact() {
         driver.switchTo().alert().accept();
+    }
+
+    public void initEditContact() {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+
+    public void submitEditContact() {
+        click(By.name("update"));
     }
 }
