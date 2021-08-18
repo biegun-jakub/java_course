@@ -98,9 +98,11 @@ public class ContactHelper extends HelperBase {
             String lastname = cells.get(1).getText();
             String firstname = cells.get(2).getText();
             int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
-            String[] phones = cells.get(5).getText().split("\n");
+            String allPhones = cells.get(5).getText();
+            String allAddresses = cells.get(3).getText();
+            String allEmails = cells.get(4).getText();
             contactCache.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname)
-                    .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
+                    .withAllPhones(allPhones).withAllEmails(allEmails).withAllAddresses(allAddresses));
         }
         return contactCache;
     }
@@ -125,9 +127,15 @@ public class ContactHelper extends HelperBase {
         String home = driver.findElement(By.name("home")).getAttribute("value");
         String mobile = driver.findElement(By.name("mobile")).getAttribute("value");
         String work = driver.findElement(By.name("work")).getAttribute("value");
+        String email = driver.findElement(By.name("email")).getAttribute("value");
+        String email2 = driver.findElement(By.name("email2")).getAttribute("value");
+        String email3 = driver.findElement(By.name("email3")).getAttribute("value");
+        String address = driver.findElement(By.name("address")).getAttribute("value");
+        String address2 = driver.findElement(By.name("address2")).getAttribute("value");
         driver.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstName(firstName).withLastName(lastName)
-                .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+                .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withEmail(email)
+                .withEmail2(email2).withEmail3(email3).withAddress(address).withAddress2(address2);
     }
 
     public void initContactModificationById(int id) {
