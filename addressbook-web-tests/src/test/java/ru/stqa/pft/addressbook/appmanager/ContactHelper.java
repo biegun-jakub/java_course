@@ -31,6 +31,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("address"), contactData.getAddress());
         type(By.name("home"), contactData.getPhoneNumber());
         type(By.name("email"), contactData.getEmail());
+        attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
             new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -136,6 +137,30 @@ public class ContactHelper extends HelperBase {
         return new ContactData().withId(contact.getId()).withFirstName(firstName).withLastName(lastName)
                 .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withEmail(email)
                 .withEmail2(email2).withEmail3(email3).withAddress(address).withAddress2(address2);
+    }
+
+    public ContactData infoFromDetailsPage(ContactData contact) {
+        initContactDetailsById(contact.getId());
+        String name = driver.findElement(By.xpath("//div[@id='content']/b")).getAttribute("value");
+        String address = driver.findElement(By.xpath("//div[@id='content']/text()[2]")).getText();
+        String homePhone = driver.findElement(By.xpath("//div[@id='content']/text()[4]")).getText();
+        String mobilePhone = driver.findElement(By.xpath("//div[@id='content']/text()[5]")).getText();
+        String workPhone = driver.findElement(By.xpath("//div[@id='content']/text()[6]")).getText();
+        String email = driver.findElement(By.xpath("//div[@id='content']/a[1]")).getAttribute("value");
+        String email2 = driver.findElement(By.xpath("//div[@id='content']/a[2]")).getAttribute("value");
+        String email3 = driver.findElement(By.xpath("//div[@id='content']/a[3]")).getAttribute("value");
+        String address2 = driver.findElement(By.xpath("//*[@id='content']/text()[10]")).getText();
+
+        return new ContactData().withId(contact.getId()).withName(name)
+                .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone).withEmail(email)
+                .withEmail2(email2).withEmail3(email3).withAddress(address).withAddress2(address2);
+    }
+
+    private void initContactDetailsById(int id) {
+        WebElement checkbox = driver.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+        WebElement row = checkbox.findElement(By.xpath("./../.."));
+        List<WebElement> cells = row.findElements(By.tagName("td"));
+        cells.get(6).findElement(By.tagName("a")).click();
     }
 
     public void initContactModificationById(int id) {
