@@ -15,19 +15,6 @@ public class ContactData {
     @Column(name = "id")
     private int id = Integer.MAX_VALUE;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ContactData that = (ContactData) o;
-        return id == that.id && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName);
-    }
-
     @Expose
     @Column(name = "firstname")
     private String firstName;
@@ -89,6 +76,19 @@ public class ContactData {
 
     @Transient
     private String name;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return id == that.id && Objects.equals(firstName, that.firstName) && Objects.equals(address, that.address) && Objects.equals(lastName, that.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, address, lastName);
+    }
 
     @Column(name = "photo")
     @Type(type = "text")
