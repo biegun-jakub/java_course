@@ -70,3 +70,4 @@ addressbook-web-tests/build/classes/java/test/ru/stqa/pft/addressbook/tests/Cont
 addressbook-web-tests/build/reports/tests/test/classes/ru.stqa.pft.addressbook.tests.ContactModificationTests.html
 addressbook-web-tests/build/reports/tests/test/classes/ru.stqa.pft.addressbook.tests.GroupModificationTests.html
 addressbook-web-tests/build/tmp/compileTestJava/previous-compilation-data.bin
+*.log
