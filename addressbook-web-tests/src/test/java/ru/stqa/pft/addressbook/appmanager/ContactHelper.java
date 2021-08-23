@@ -31,10 +31,15 @@ public class ContactHelper extends HelperBase {
         type(By.name("address"), contactData.getAddress());
         type(By.name("home"), contactData.getPhoneNumber());
         type(By.name("email"), contactData.getEmail());
-        attach(By.name("photo"), contactData.getPhoto());
+        //attach(By.name("photo"), contactData.getPhoto());
 
-        if (creation) {
-            new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+       if (creation) {
+           if (contactData.getGroups().size() > 0) {
+               Assert.assertTrue(contactData.getGroups().size() == 1);
+               new Select(driver.findElement(By.name("new_group")))
+                       .selectByVisibleText(contactData.getGroups().iterator().next().getName());
+           }
+
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -54,7 +59,7 @@ public class ContactHelper extends HelperBase {
 
     private Contacts contactCache = null;
 
-    private void selectContactById(int id) {
+    public void selectContactById(int id) {
         driver.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
@@ -168,5 +173,19 @@ public class ContactHelper extends HelperBase {
         WebElement row = checkbox.findElement(By.xpath("./../.."));
         List<WebElement> cells = row.findElements(By.tagName("td"));
         cells.get(7).findElement(By.tagName("a")).click();
+    }
+
+    public void addContactToGroup(String group) {
+        WebElement groupList = driver.findElement(By.name("to_group"));
+        WebElement addButton = driver.findElement(By.name("add"));
+        groupList.click();
+        new Select(groupList).selectByVisibleText(group);
+        addButton.click();
+    }
+
+    public void removeFromGroup(int id) {
+        selectContactById(id);
+        WebElement removeButton = driver.findElement(By.name("remove"));
+        removeButton.click();
     }
 }

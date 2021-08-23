@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
@@ -96,5 +97,11 @@ public class GroupHelper extends HelperBase {
         deleteSelectedGroups();
         groupCache = null;
         returnToGroupPage();
+    }
+
+    public void filterGroup(String group) {
+        WebElement groupList = driver.findElement(By.name("group"));
+        groupList.click();
+        new Select(groupList).selectByVisibleText(group);
     }
 }
