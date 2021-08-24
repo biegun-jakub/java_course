@@ -71,3 +71,6 @@ addressbook-web-tests/build/reports/tests/test/classes/ru.stqa.pft.addressbook.t
 addressbook-web-tests/build/reports/tests/test/classes/ru.stqa.pft.addressbook.tests.GroupModificationTests.html
 addressbook-web-tests/build/tmp/compileTestJava/previous-compilation-data.bin
 *.log
+addressbook-web-tests/src/test/resources/groups.json
+addressbook-web-tests/src/test/resources/groups.xml
+addressbook-web-tests/src/test/resources/contacts.json
