@@ -5,7 +5,6 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactDetailedInfoTests extends TestBase {
 
-    @Test
     public void testDetailsPage() {
         app.goTo().homePage();
         ContactData contact = app.contact().all().iterator().next();
