@@ -19,11 +19,12 @@ public class AdminHelper extends HelperBase{
     }
 
     public void goToUserMgmt() {
+        click(By.xpath("//a[@href='/mantisbt-1.2.20/manage_overview_page.php']"));
         click(By.xpath("//a[@href='/mantisbt-1.2.20/manage_user_page.php']"));
     }
 
-    public void selectUser() {
-        click(By.xpath("//tr[@class='row-1']/td/a"));
+    public void selectUser(String name) {
+        click(By.xpath("//a[text() = '" + name + "']"));
     }
 
     public void sendResetPassword() {

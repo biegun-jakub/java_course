@@ -8,20 +8,16 @@ dependencies {
     implementation 'org.testng:testng:7.4.0'
     implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-beta-4'
     implementation 'org.hamcrest:hamcrest:2.2'
+    implementation 'com.google.http-client:google-http-client-apache:2.1.2'
+    implementation 'commons-net:commons-net:3.8.0'
+    implementation 'org.subethamail:subethasmtp:3.1.7'
+    implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.8'
+    implementation 'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
+    implementation 'org.hibernate:hibernate-core:5.5.7.Final'
+    implementation 'mysql:mysql-connector-java:8.0.26'
+
 }
 
 test {
-    useTestNG() {
-        suites 'src/test/resources/testng.xml'
-    }
-    if (project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
-    }
-    if (project.hasProperty('target')) {
-        systemProperty 'target', "${target}"
-    }
-    if (project.hasProperty('verifyUI')) {
-        systemProperty 'verifyUI', "${verifyUI}"
-    }
-
+    useTestNG()
 }
