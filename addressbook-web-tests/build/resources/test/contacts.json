@@ -1,0 +1,26 @@
+[
+  {
+    "firstName": "test 0",
+    "address": "Test Street 0",
+    "email": "test0@testemail",
+    "lastName": "Test 0",
+    "group": "test 0",
+    "homePhone": "1230"
+  },
+  {
+    "firstName": "test 1",
+    "address": "Test Street 1",
+    "email": "test1@testemail",
+    "lastName": "Test 1",
+    "group": "test 0",
+    "homePhone": "1231"
+  },
+  {
+    "firstName": "test 2",
+    "address": "Test Street 2",
+    "email": "test2@testemail",
+    "lastName": "Test 2",
+    "group": "test 0",
+    "homePhone": "1232"
+  }
+]
