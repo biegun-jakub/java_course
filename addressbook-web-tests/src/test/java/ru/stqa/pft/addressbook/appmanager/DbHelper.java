@@ -42,4 +42,63 @@ public class DbHelper {
         session.close();
         return new Contacts(result);
     }
+
+    public GroupData getGroup(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        GroupData result = (GroupData) session.createQuery("from GroupData where id=" + id).getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
+    public ContactData getContact(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        ContactData result = (ContactData) session.createQuery("from ContactData where id=" + id).getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
+    public Groups getGroupsFromContact(int id) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<GroupData> result = session.createQuery("from ContactData where group_id=" + id).list();
+        session.getTransaction().commit();
+        session.close();
+        return new Groups(result);
+    }
+
+    public GroupData getGroupsFromContactWithMaxId() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        GroupData result = (GroupData) session.createQuery
+                ("from GroupData where id=(select max(group1.id) from GroupData group1)").getSingleResult();
+        session.getTransaction().commit();
+        session.close();
+        return result;
+    }
+
+    public GroupData chosenGroup(Groups groups, ContactData contact) {
+        Groups chosenGroups = contact.getGroups();
+        for (GroupData group : groups) {
+            if (chosenGroups.contains(group)) {
+                continue;
+            } else {
+                return group;
+            }
+        }
+        return null;
+    }
+
+    public GroupData chosenGroupForRemovingContact() {
+        Groups groups = groups();
+        for (GroupData group : groups) {
+            if (group.getContacts().size() > 0) {
+                return group;
+            }
+        }
+        return null;
+    }
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -175,17 +176,18 @@ public class ContactHelper extends HelperBase {
         cells.get(7).findElement(By.tagName("a")).click();
     }
 
-    public void addContactToGroup(String group) {
-        WebElement groupList = driver.findElement(By.name("to_group"));
-        WebElement addButton = driver.findElement(By.name("add"));
-        groupList.click();
-        new Select(groupList).selectByVisibleText(group);
-        addButton.click();
+    public void addContactToGroup(GroupData group) {
+        new Select(driver.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
+        click(By.xpath("//input[@name='add']"));
     }
 
-    public void removeFromGroup(int id) {
-        selectContactById(id);
+    public void removeFromGroup() {
         WebElement removeButton = driver.findElement(By.name("remove"));
         removeButton.click();
+    }
+
+    public void filterByGroup(int id) {
+        driver.findElement(By.xpath("//select[@name='group']")).click();
+        driver.findElement(By.xpath("//option[@value='" + id + "']")).click();
     }
 }

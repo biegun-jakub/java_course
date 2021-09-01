@@ -262,4 +262,9 @@ public class ContactData {
     public Groups getGroups() {
         return new Groups(groups);
     }
+
+    public ContactData withGroup(GroupData group) {
+        groups.add(group);
+        return this;
+    }
 }
